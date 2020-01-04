@@ -1,0 +1,25 @@
+{
+  "name": "ZeroWasteGirls",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "concurrently \"cd server && node index.js\" \"cd client && npm start\""
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/MartinJelenak/ZeroWasteGirls.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/MartinJelenak/ZeroWasteGirls/issues"
+  },
+  "homepage": "https://github.com/MartinJelenak/ZeroWasteGirls#readme",
+  "dependencies": {
+    "concurrently": "^5.0.2",
+    "latest-version": "^5.1.0"
+  }
+}
