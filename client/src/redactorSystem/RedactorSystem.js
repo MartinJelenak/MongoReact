@@ -1,41 +1,86 @@
 import React from 'react';
+import InputComponent from './InputComponent.js'
+import ButtonComponent from './ButtonComponent.js'
+import TextAreaComponent from './TextAreaComponent.js'
+// import { ApiGet, ApiPost, ApiPut } from '../common/Api';
+
+class RedactorSystem extends React.Component {
+    constructor(props) {
+        super(props);
+        this.state = {
+            nameTopicState: '',
+            prologTopicState: '',
+            bodyTopicState: '',
+            users: ''
+        }
+    }
+    render() {
+        return (
+            <form>
+                <InputComponent title={'Title'} inputChange={this.inputTitleChange} />
+                <InputComponent title={'prolog'} inputChange={this.inputPrologChange} />
+                <TextAreaComponent inputBodyTextChange={this.inputBodyTextChange} />
+                <ButtonComponent butTitle={'Commit'} SubmitButClick={this.SubmitButClick} />
+            </form >
+        );
+    }
+
+
+    SubmitButClick = (event) => {
+        event.preventDefault();
+        console.log(this.state.nameTopicState, this.state.prologTopicState, this.state.bodyTopicState)
+        fetch('api/title', {
+            method: 'post',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({
+                nameTopic: this.state.nameTopicState,
+                prologTopic: this.state.prologTopicState,
+                bodyTopic: this.state.bodyTopicState
+            })
+        })
 
 
 
-function RedactorSystem() {
-    return (
-        <form>
-            <div className="form-group row">
-                <label for="inputEmail3" className="col-sm-2 col-form-label">Title</label>
-                <div className="col-sm-10">
-                    <input class="form-control" type="text" placeholder="Default input" />
-                </div>
-            </div>
-            <div className="form-group row">
-                <label for="inputPassword3" className="col-sm-2 col-form-label">Prolog</label>
-                <div className="col-sm-10">
-                    <input class="form-control" type="text" placeholder="Default input" />
-                </div>
-            </div>
-            <div class="form-group">
-                <label for="exampleFormControlTextarea1">Clanok</label>
-                <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
-            </div>
+    }
 
-            <div className="form-group row">
-                <div className="col-sm-1">
-                    <button type="submit" className="btn btn-primary">Commit</button>
-                </div>
-                <div className="col-sm-11">
-                    <div class="alert alert-warning" role="alert">
-                        A simple warning alert—check it out!
-                    </div>
-                </div>
-            </div>
-        </form>
-    );
+    //     const body = {
+    //         title: this.state.titleState,
+    //     };
+
+    //     ApiPost('/api/title', body)
+    //         .then((data) => {
+    //             console.log(data);
+
+    //             this.setState({
+    //                 sent: true,
+    //                 success: true,
+    //             });
+    //         }).catch((error) => {
+    //             console.error(error);
+
+    //             this.setState({
+    //                 sent: true,
+    //                 success: false,
+    //             });
+    //         });
+    // }
+
+    inputTitleChange = (event) => {
+        this.setState({
+            nameTopicState: event.target.value
+        });
+    }
+    inputPrologChange = (event) => {
+        this.setState({
+            prologTopicState: event.target.value
+        });
+    }
+    inputBodyTextChange = (event) => {
+        this.setState({
+            bodyTopicState: event.target.value
+        });
+    }
 }
-
 export default RedactorSystem;
 
 

@@ -1,7 +1,8 @@
 import React from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './App.css';
-import MovieIndex from './movies/MovieIndex';
+import Blog from './web/Blog.js'
+// import MovieIndex from './movies/MovieIndex';
 import RedactorSystem from './redactorSystem/RedactorSystem';
 
 function App() {
@@ -10,6 +11,7 @@ function App() {
       <hr />
       {/* <MovieIndex /> */}
       <RedactorSystem />
+      <Blog />
     </div>
   );
 }
