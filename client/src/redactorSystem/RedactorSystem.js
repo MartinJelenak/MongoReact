@@ -11,7 +11,6 @@ class RedactorSystem extends React.Component {
             nameTopicState: '',
             prologTopicState: '',
             bodyTopicState: '',
-            users: ''
         }
     }
     render() {

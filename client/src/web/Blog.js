@@ -1,10 +1,13 @@
 import React from 'react';
-
+import BlogCard from './BlogCards'
+import BlogDetail from './BlogDetail'
 class Blog extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            topics: []
+            topics: [],
+            blogCardState: true,
+            choosenBlogState: ''
         }
     }
     componentDidMount() {
@@ -13,24 +16,33 @@ class Blog extends React.Component {
         fetch(request)
             .then(response => response.json())
             .then(data => this.setState({ topics: data }));
+
+        this.setState({
+            blogCardState: true
+        })
     }
 
     render() {
-        return (
-            <>
-                {
-                    this.state.topics.map((item, index) =>
-                        <React.Fragment>
-                            <h2 key={index}> {item.nameTopic}   </h2>
-                            <h5 key={index}> {item.prologTopic} </h5>
-                            <p key={index}> {item.prologTopic} </p>
-                        </React.Fragment>
-                    )
-                }
-            </>
-        );
+        if (this.state.blogCardState === true) {
+            return (
+                <div className="row row-cols-1 row-cols-md-3">
+                    <BlogCard data={this.state.topics} onClick={this.handleClick} />
+                </div>
+            );
+        } else {
+            return (
+                <BlogDetail data={this.state.topics} index={this.state.choosenBlogState} />
+            );
+        }
     }
-
+    handleClick = (event) => {
+        // event.preventDefault();
+        console.log(event.target.name)
+        this.setState({
+            choosenBlogState: event.target.name,
+            blogCardState: false
+        })
+    }
 }
 
 export default Blog;

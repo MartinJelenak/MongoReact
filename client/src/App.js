@@ -1,19 +1,35 @@
 import React from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './App.css';
-import Blog from './web/Blog.js'
-// import MovieIndex from './movies/MovieIndex';
-import RedactorSystem from './redactorSystem/RedactorSystem';
+import NavBar from './web/NavBar.js'
+import Body from './web/Body.js'
 
-function App() {
-  return (
-    <div className='container'>
-      <hr />
-      {/* <MovieIndex /> */}
-      <RedactorSystem />
-      <Blog />
-    </div>
-  );
+
+class App extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      redactorState: 'Blog',
+    }
+  }
+  render() {
+
+    return (
+      <>
+        <NavBar onClick={this.clickHandle} />
+        <div className='container'>
+          <Body whichBody={this.state.redactorState} />
+        </div>
+      </>
+    )
+
+  }
+  clickHandle = (event) => {
+    event.preventDefault();
+    console.log(event.target.name)
+    this.setState({
+      redactorState: event.target.name
+    })
+  }
 }
-
 export default App;
