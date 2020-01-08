@@ -10,10 +10,8 @@ class BlogCard extends React.Component {
             <>
                 {
                     this.props.data.map((item, index) =>
-                        <BlogCardSchema nameTopic={item.nameTopic}
-                            prologTopic={item.prologTopic}
-                            bodyTopic={item.bodyTopic}
-                            lol={index}
+                        <BlogCardSchema data={item}
+                            index={index}
                             key={index}
                             onClick={this.props.onClick} />
                     )

@@ -8,13 +8,12 @@ class BlogDetail extends React.Component {
     render() {
         return (
             <>
-                <h2>{this.props.data[this.props.index].nameTopic}</h2>
+                <p>{this.props.index}</p>
+                {/* <h2>{this.props.data[this.props.index].nameTopic}</h2>
                 <br />
                 <h5>{this.props.data[this.props.index].prologTopic}</h5>
                 <br />
-                <p>{this.props.data[this.props.index].bodyTopic}</p>
-                {/* <h2>{this.props.data}</h2>
-                <p>{this.props.index}</p> */}
+                <p>{this.props.data[this.props.index].bodyTopic}</p> */}
             </>
         )
     }

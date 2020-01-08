@@ -10,24 +10,23 @@ class Blog extends React.Component {
             choosenBlogState: ''
         }
     }
-    componentDidMount() {
-        const request = new URL('/api/title', 'http://localhost:3000');
+    // componentDidMount() {
+    //     const request = new URL('/api/title', 'http://localhost:3000');
 
-        fetch(request)
-            .then(response => response.json())
-            .then(data => this.setState({ topics: data }));
+    //     fetch(request)
+    //         .then(response => response.json())
+    //         .then(data => this.setState({ topics: data }));
 
-        this.setState({
-            blogCardState: true
-        })
-    }
+    //     this.setState({
+    //         blogCardState: true
+    //     })
+    // }
 
     render() {
         if (this.state.blogCardState === true) {
             return (
-                <div className="row row-cols-1 row-cols-md-3">
-                    <BlogCard data={this.state.topics} onClick={this.handleClick} />
-                </div>
+                <BlogCard data={this.state.topics} onClick={this.handleClick} />
+                </div >
             );
         } else {
             return (

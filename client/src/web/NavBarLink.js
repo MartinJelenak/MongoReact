@@ -8,7 +8,7 @@ class NavBarLink extends React.Component {
     render() {
         return (
             <li className="nav-item">
-                <a className="nav-link" href="#" key={this.props.name} name={this.props.name} onClick={this.props.onClick}>{this.props.name}</a>
+                <a className="nav-link" href='#' key={this.props.name} name={this.props.name} onClick={this.props.onClick}>{this.props.name}</a>
             </li>
         )
     }
