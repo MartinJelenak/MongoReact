@@ -1,5 +1,7 @@
 import React from 'react'
 import BlogCardSchema from './BlogCardSchema'
+// import PropTypes from 'prop-types';
+
 class BlogCard extends React.Component {
     constructor(props) {
         super(props);
@@ -13,12 +15,13 @@ class BlogCard extends React.Component {
                         <BlogCardSchema data={item}
                             index={index}
                             key={index}
-                            onClick={this.props.onClick} />
+                            handleClickDetail={this.props.handleClickDetail} />
                     )
                 }
             </>
         )
     }
 }
+
 
 export default BlogCard

@@ -9,12 +9,20 @@ class App extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      redactorState: 'Blog',
       dataIndex: 0,
+      whichBody: 'Blog',
+      data: []
     }
   }
 
+  componentDidMount() {
+    const request = new URL('/api/title', 'http://localhost:3000');
 
+    fetch(request)
+      .then(response => response.json())
+      .then(data => this.setState({ data: data.reverse() }));
+    console.log('prebehol fetch znova')
+  }
 
 
   render() {
@@ -23,34 +31,62 @@ class App extends React.Component {
       <>
         <NavBar onClick={this.handleClick} />
         <div className='container'>
-          <Body whichBody={this.state.redactorState} onClick={this.handleClick} index={this.state.index} />
+          <Body data={this.state.data}
+            whichBody={this.state.whichBody}
+            onClick={this.handleClick}
+            handleClickDetail={this.handleClickDetail}
+            index={this.state.dataIndex} />
         </div>
       </>
     )
 
   }
-  handleClick = (event) => {
-    console.log(event.target.name)
+  handleClickBlog = (event) => {
+    event.preventDefault();
+    console.log(event.currentTarget.name, event.currentTarget)
     if (event.target.name === 'Blog') {
+      const request = new URL('/api/title', 'http://localhost:3000');
+      fetch(request)
+        .then(response => response.json())
+        .then(data => this.setState({ data: data.reverse() }));
+
+      console.log('prebehol fetch znova')
       this.setState({
         redactorState: 'Blog'
       })
-    } else if (event.target.name === 'BlogDetail') {
+    }
+  }
+
+  handleClickDetail = (e) => {
+    console.log(e.currentTarget.id)
+    console.log(e.currentTarget.name)
+    if (e.currentTarget.name === 'BlogDetail') {
       this.setState({
-        dataIndex: event.target.value,
+        dataIndex: e.currentTarget.id,
         redactorState: 'BlogDetail'
       }, () => {
-        console.log('toto je test:', this.state.dataIndex, this.state.redactorState)
+        console.log('toto je test:', this.state.dataIndex, this.state.whichBody)
       })
-    } else if (event.target.name === 'About us') {
+    }
+  }
+
+  handleClickAboutUs = (event) => {
+    if (event.currentTarget.name === 'BlogDetail') {
       this.setState({
+        dataIndex: event.currentTarget.id,
         redactorState: 'About us'
       })
-    } else if (event.target.name === 'Redaction') {
+    }
+  }
+
+  handleClickRedaction = (event) => {
+    if (event.currentTarget.name === 'BlogDetail') {
       this.setState({
+        dataIndex: event.currentTarget.id,
         redactorState: 'Redaction'
       })
     }
   }
+
 }
 export default App;

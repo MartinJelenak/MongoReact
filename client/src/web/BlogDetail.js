@@ -1,5 +1,6 @@
 import React from 'react'
-
+// import SectionWrapper from './SectionWrapper'
+import PropTypes from 'prop-types';
 class BlogDetail extends React.Component {
     constructor(props) {
         super(props);
@@ -8,15 +9,21 @@ class BlogDetail extends React.Component {
     render() {
         return (
             <>
-                <p>{this.props.index}</p>
-                {/* <h2>{this.props.data[this.props.index].nameTopic}</h2>
+                {/* <SectionWrapper> */}
+                <h2>{this.props.data[this.props.index].nameTopic}</h2>
                 <br />
                 <h5>{this.props.data[this.props.index].prologTopic}</h5>
                 <br />
-                <p>{this.props.data[this.props.index].bodyTopic}</p> */}
+                <p>{this.props.data[this.props.index].bodyTopic}</p>
+                {/* </SectionWrapper> */}
             </>
         )
     }
 }
+
+BlogDetail.propTypes = {
+    data: PropTypes.array,
+    index: PropTypes.number
+};
 
 export default BlogDetail
