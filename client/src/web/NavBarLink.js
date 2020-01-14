@@ -1,4 +1,6 @@
 import React from 'react'
+import { Link } from '@reach/router'
+// import { Router } from '@reach/router'
 
 class NavBarLink extends React.Component {
     constructor(props) {
@@ -7,9 +9,11 @@ class NavBarLink extends React.Component {
     }
     render() {
         return (
-            <li className="nav-item">
-                <a className="nav-link" href="/#" key={this.props.name} name={this.props.name} onClick={this.props.onClick}>{this.props.name}</a>
-            </li>
+            <>
+                <li className="nav-item">
+                    <Link to='blog' className="nav-link">Blog</Link>
+                </li>
+            </>
         )
     }
 }

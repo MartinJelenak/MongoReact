@@ -9,16 +9,15 @@ class BlogCard extends React.Component {
     }
     render() {
         return (
-            <>
+            <div className="row row-cols-1 row-cols-md-3">
                 {
                     this.props.data.map((item, index) =>
-                        <BlogCardSchema data={item}
-                            index={index}
-                            key={index}
-                            handleClickDetail={this.props.handleClickDetail} />
+                        <BlogCardSchema
+                            data={item}
+                        />
                     )
                 }
-            </>
+            </div>
         )
     }
 }

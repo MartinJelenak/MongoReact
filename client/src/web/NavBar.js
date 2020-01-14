@@ -1,7 +1,6 @@
 import React from 'react'
-import NavBarLink from './NavBarLink'
 import logo from './logo.png';
-
+import { Link } from '@reach/router'
 class NavBar extends React.Component {
     constructor(props) {
         super(props);
@@ -9,8 +8,6 @@ class NavBar extends React.Component {
     }
     render() {
         return (
-            // <div className='container'>
-
             <nav className="navbar navbar-expand-lg navbar-light bg-light">
                 <nav className="navbar navbar-light bg-light">
                     <a className="navbar-brand" href="/#">
@@ -21,15 +18,19 @@ class NavBar extends React.Component {
 
                 <div className="collapse navbar-collapse" id="navbarText">
                     <ul className="navbar-nav mr-auto">
-                        <NavBarLink name={'Blog'} onClick={this.props.onClick} />
-                        <NavBarLink name={'About us'} onClick={this.props.onClick} />
-                        <NavBarLink name={'Redaction'} onClick={this.props.onClick} />
+                        <li className="nav-item">
+                            <Link to='/' className="nav-link">Blog</Link>
+                        </li>
+                        <li className="nav-item">
+                            <Link to='aboutus' className="nav-link">About us</Link>
+                        </li>
+                        <li className="nav-item">
+                            <Link to='reduction' className="nav-link">Redaction</Link>
+                        </li>
                     </ul>
                     <span className="navbar-text">Navbar text with an inline element</span>
-                </div>
+                </div >
             </nav >
-            // </div>
-
         )
     }
 }

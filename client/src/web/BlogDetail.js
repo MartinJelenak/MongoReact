@@ -7,15 +7,16 @@ class BlogDetail extends React.Component {
         this.state = {}
     }
     render() {
+        const articleArr = this.props.data.find(article =>
+            article._id === this.props.detailId
+        )
         return (
             <>
-                {/* <SectionWrapper> */}
-                <h2>{this.props.data[this.props.index].nameTopic}</h2>
+                <h2>{articleArr.nameTopic}</h2>
                 <br />
-                <h5>{this.props.data[this.props.index].prologTopic}</h5>
+                <h5>{articleArr.prologTopic}</h5>
                 <br />
-                <p>{this.props.data[this.props.index].bodyTopic}</p>
-                {/* </SectionWrapper> */}
+                <p>{articleArr.bodyTopic}</p>
             </>
         )
     }

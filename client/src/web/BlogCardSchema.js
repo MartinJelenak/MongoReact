@@ -1,4 +1,5 @@
 import React from 'react'
+import { Link } from '@reach/router'
 
 class BlogCardSchema extends React.Component {
     constructor(props) {
@@ -6,21 +7,25 @@ class BlogCardSchema extends React.Component {
         this.state = {}
     }
     render() {
+        const linkStyle = {
+            textDecoration: "none",
+            color: "dimgray"
+        };
         return (
-            <div name="BlogDetail" className="col mb-4" onClick={this.props.handleClickDetail} id={this.props.index}>
-
-                <div className="card h-100" >
-                    <img src="https://www.omladnut.sk/wp-content/uploads/2019/05/zero-waste.jpg" className="card-img-top" alt="..." />
-                    <div className="card-body">
-                        <h5 className="card-title">{this.props.data.nameTopic}</h5>
-                        <p className="card-text">{this.props.data.prologTopic}</p>
+            <Link to={`/blogdetail/${this.props.data._id}`} style={linkStyle}>
+                <div data-name="BlogDetail" className="col mb-4">
+                    <div className="card h-100" >
+                        <img src="https://www.omladnut.sk/wp-content/uploads/2019/05/zero-waste.jpg" className="card-img-top" alt="..." />
+                        <div className="card-body">
+                            <h5 className="card-title">{this.props.data.nameTopic}</h5>
+                            <p className="card-text">{this.props.data.prologTopic}</p>
+                        </div>
+                        <div className="card-footer">
+                            <small className="text-muted">Last updated 3 mins ago</small>
+                        </div>
                     </div>
-                    {/* <button onClick={this.props.onClick} name={'BlogDetail'} value={this.props.index}>Click</button> */}
-                    <div className="card-footer">
-                        <small className="text-muted">Last updated 3 mins ago</small>
-                    </div>
-                </div>
-            </div >
+                </div >
+            </Link>
         )
     }
 }
